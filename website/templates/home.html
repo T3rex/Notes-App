@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %} Home {% endblock %} {% block content
+%}
+<div class="container"></div>
+<h2 class="text-center">Notes</h2>
+
+<ul class="list-group list-group-flush">
+  {% for note in user.notes %}
+  <div class="row">
+    <li class="list-group-item col-11">{{note.text}}</li>
+    <a href="/delete/{{note.id}}"  class="col-1"><button style="width: 70px ;" type="button" class="btn btn-dark btn-sm " >Delete</button></a>
+    <!-- <button style="background-color: #fff;" class="col-1">&times;</button> -->
+  </div>
+  <br>
+  {% endfor %}
+</ul>
+
+<form method="POST">
+  
+    <div class="mb-3">
+      <textarea
+      rows="8"
+        type="text"
+        class="form-control"
+        id="note"
+        aria-describedby="emailHelp"
+        name="note"
+        placeholder="Start taking notes..."
+      ></textarea>
+    </div>
+    <br />
+    <div align="center">
+      <button type="submit" class="btn btn-primary btn-lg">Add note</button>
+    </div>  
+</form>
+</div>
+
+{% endblock %}
